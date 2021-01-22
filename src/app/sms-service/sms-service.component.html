@@ -1,0 +1,189 @@
+
+    <div class="container">
+        <div class="row content-wrap">
+            <div class="logo-style">
+                <img src="assets/Dmifinance-logo.png">
+            </div>
+            <div class="text-header">
+                <p class="">Important communication on moratorium of your loan
+                        EMIs pertaining to COVID-19 – Regulatory Package announced by
+                        Reserve Bank of India (RBI) on March 27, 2020</p>
+            </div>
+            <div class="text-content">
+                <p class="dear-txt"> Dear {{userName}} ({{userLoanName}}),</p>
+               
+                <p>We hope you are staying home and keeping healthy.</p>
+                <p> Many of you have reached out to us recently following the announcement made by RBI on 
+                    March 27, 2020. Owing to this announcement, DMI Finance has decided to give an option to 
+                    the customer to either choose repayment with up to 3 month moratorium / deferment facility 
+                    (with additional interest and extended tenor) or continue repaying the EMIs as per the 
+                    agreed schedule. 
+                </p>
+                <p>
+                    Please choose your option. Only one can be selected. 
+                </p>
+            </div>
+            <div class="radio-content">
+                <ul>
+                    <li><label for="muhRadio2"><input type="radio" name="muhRadio" value="" checked
+                                (click)="optionSelected(2)" />
+                            <span class="radio-text">Pay EMIs as usual<br>
+                                No extra interest | Next EMI in April 
+                            </span>
+                        </label>
+                    </li>
+                    <li class="divider"><label for="muhRadio1"><input type="radio" name="muhRadio" value=""
+                                (click)="optionSelected(1)" />
+                            <span class="radio-text">Avail loan moratorium / deferment with the Term and Conditions mentioned below.<br>  
+                                Extra interest applicable <span style="color:#065189;" (click)="openExample()">(see example) </span> | Tenor will increase by respective month(s). 
+                            </span>
+                        </label>
+                    </li>
+                    <!-- <li><label for="muhRadio2"><input type="radio" name="muhRadio" value="" (click)="optionSelected(3)" />
+                      <span class="radio-text">This loan doesn't belong to me. </span></label>
+                    </li> -->
+                    <li class="month-radio-btn desktop-display" *ngIf="optionSelectedUser=='Yes'">
+                        <ul class="month-ul">
+                            <li><label for="muhRadio3"><input type="radio" name="muhRadio3" value=""
+                                        (click)="suboptionSelected(3)" />
+                                    <span class="radio-text">For March 2020 only
+                                    </span>
+                                </label>
+                            </li>
+                            <li ><label for="muhRadio3"><input type="radio" name="muhRadio3" value=""
+                                        (click)="suboptionSelected(4)" />
+                                    <span class="radio-text">For March and April 2020 only 
+                                    </span>
+                                </label>
+                            </li>
+                            <li><label for="muhRadio3"><input type="radio" name="muhRadio3" value=""
+                                (click)="suboptionSelected(5)" />
+                                    <span class="radio-text">For March, April and May 
+                                        2020 
+                                    </span>
+                                </label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="month-radio-btn mobile-display " *ngIf="optionSelectedUser=='Yes'">
+                            <ul class="month-ul" style="display:flex;flex-direction:column">
+                                <li><label for="muhRadio3"><input type="radio" name="muhRadio3" value=""
+                                            (click)="suboptionSelected(3)" />
+                                        <span class="radio-text">For March 2020 only
+                                        </span>
+                                    </label>
+                                </li>
+                                <li ><label for="muhRadio3"><input type="radio" name="muhRadio3" value=""
+                                            (click)="suboptionSelected(4)" />
+                                        <span class="radio-text">For March and April 2020 only 
+                                        </span>
+                                    </label>
+                                </li>
+                                <li><label for="muhRadio3"><input type="radio" name="muhRadio3" value=""
+                                    (click)="suboptionSelected(5)" />
+                                        <span class="radio-text">For March, April and May 
+                                            2020 
+                                        </span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                    <!-- <li>
+                        <div class="example">
+                            <p>
+                                Example - Amit took a personal loan of INR 50,000 on a 12 month EMI. His EMI is INR 4,631 per month and original total interest to be paid by him is INR 6,736. If Amit decides to take a 
+                                    3 month moratorium, he will end up paying additional interest of INR 3,473 which is 51% of the original interest.
+                            </p>
+                        </div>
+                    </li> -->
+                    <li class="mobile-content">
+                       
+                        <h6 class="">
+                                We appreciate your patronage, please also help us with additional information to improve our communication with you.
+                        </h6><br>
+                        <label>
+                            Additional contact mobile number <span class="star">*</span>
+                        </label><br>
+                        <input style="width: 250px;
+                        padding: 6px 18px;"
+                        type="text" maxlength="10" minlength="10" [(ngModel)]="phoneNumber" (keypress)="onSearchChange($event)" placeholder="Mobile">
+                    </li>
+                    <li class="mobile-content">
+                        <label>
+                            Your current Sector<span class="star">*</span>
+                        </label>
+                        <div class="dropdown" ngbDropdown>
+                            <button type="button" id="optionDropdown" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ngbDropdownToggle>Select Work Profile</button>
+                            <a class="select-txt">{{userSelectedProfile}}</a>
+                            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="optionDropdown">
+                              <a *ngFor="let list of workProfile" class="dropdown-item" ngbDropdownItem (click)="userWorkProfile(list.value)">{{list.value}}</a>
+                            </div>
+                        </div>
+
+                        <!-- <mat-form-field class="min-width">
+                            <mat-select placeholder="Select Work Profile" (change)="userWorkProfile($event)">
+                                <mat-option *ngFor="let entity of workProfile" value={{entity.value}}>{{entity.value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
+                    </li>
+
+                    <li class="mobile-content">
+                        <label>
+                            Your current Profession <span class="star">*</span>
+                        </label>
+                        <div class="dropdown" ngbDropdown>
+                            <button type="button" id="optionDropdown" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ngbDropdownToggle>Select Employment Type</button>
+                            <a class="select-txt">{{userSelectedType}}</a>
+                            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="optionDropdown">
+                              <a *ngFor="let type of empType" class="dropdown-item" ngbDropdownItem (click)="userEmpType(type.value)">{{type.value}}</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="row btn-wrap">
+                    <button type="button"
+                        [ngClass]="{'submit-btn': subOptionSelection&&selected&&phoneNumber!=''&&userSelectedType!='', 'submit-btn-disable': !subOptionSelection||!selected||phoneNumber==''||userSelectedType==''}"
+                        [disabled]="!selected" (click)="optionSelected(9)">Submit</button>
+                </div>
+            </div>
+            <div class="term-condition">
+                <h6 class="t-c">Terms and Conditions -</h6>
+                <ul>
+                    <li>As per the RBI Circular dated 27th March 2020 pertaining to COVID-19 – Regulatory Package, RBI 
+                    has permitted lenders to allow its customers for Moratorium of upto three months on payment 
+                    of all instalments falling due between March 1, 2020 and May 31, 2020. </li>
+                    <li>The Moratorium facility is available to maximum of 3 EMI’s falling due between March 1, 2020 
+                    and May 31, 2020 and those who want to avail moratorium facility, can select whether they 
+                    want to have moratorium of all 3 EMI’s or 2 EMI’s or only 1 EMI.</li>  
+                    <li>The 3 months Moratorium facility permitted by RBI shall not be construed as compulsion and 
+                    customers can choose to make repayments as per pre-agreed repayment schedule of their 
+                    requisite loan accounts. </li>
+                    <li>This Moratorium facility is not available for customers whose first EMI is due on or after 1st June 
+                    2020. </li>
+                    <li>Customer who want to avail Moratorium facility of 1 month – the next EMI will be due in April 
+                    2020, Customer who want to avail moratorium of 2 months – the next EMI will be due in May 
+                    2020 and Customer want to avail moratorium of 3 months – the next EMI will be due in June 
+                    2020. </li>
+                    <li>The loan tenor will be extended as per the moratorium (period) option selected. </li>
+                    <li>Moratorium facility shall not be anyway construed as interest waiver on EMIs due. The interest 
+                    shall be calculated on the number of days EMI due during moratorium period. The interest on 
+                    deferred payments shall be communicated to the customer separately and the same shall be 
+                    payable by the customer availing Moratorium facility, along with their respective month’s EMI as 
+                    per the moratorium period selected. The updated repayment schedule along with the 
+                    moratorium charges will be communicated to you before your next EMI due date.</li> 
+                    <li>Moratorium will be provided to the customers whose consent is received through the DMI 
+                    provided channel and before the cut off date of 3rd April.</li>  
+                    <li>For multiple active loan accounts eligible for taking Moratorium, consent against each loan 
+                    account will be needed.</li>  
+                </ul>
+
+            </div>
+            <p>
+                    In case you have any other query or concern regarding moratorium scheme, please feel free to write to us at 
+                    <a href="mailto:moratoriumsupport@dmifinance.in" target="_top">moratoriumsupport@dmifinance.in</a>
+                    and we will get back to you at the earliest possible.
+                </p>
+            
+        </div>
+    </div>
+                    
